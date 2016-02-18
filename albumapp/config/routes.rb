@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
+  
   # root to: "home#users"
   resources :albums do
     resources :images

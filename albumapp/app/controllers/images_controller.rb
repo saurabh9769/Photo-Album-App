@@ -1,11 +1,13 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_filter :set_album
 
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = current_user.images
     @album = Album.find(params[:album_id])
+
   end
 
   # GET /images/1
@@ -30,9 +32,10 @@ class ImagesController < ApplicationController
   def create
     @album = Album.find(params[:album_id])
     @image = Image.new(image_params)
+    @image.album = @album
     respond_to do |format|
       if @image.save
-        binding.pry
+        # binding.pry
         format.html { redirect_to album_image_path(@album,@image), notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
@@ -40,6 +43,7 @@ class ImagesController < ApplicationController
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /images/1
@@ -47,8 +51,9 @@ class ImagesController < ApplicationController
   def update
     @album = Album.find(params[:album_id])
     respond_to do |format|
+      # binding.pry
       if @image.update(image_params)
-        format.html { redirect_to edit_album_image_path(@album,@image), notice: 'Image was successfully updated.' }
+        format.html { redirect_to album_image_path(@album,@image), notice: 'Image was successfully updated.' }
         format.json { render :show, status: :ok, location: @image }
       else
         format.html { render :edit }
@@ -63,19 +68,26 @@ class ImagesController < ApplicationController
     @album = Album.find(params[:album_id])
     @image.destroy
     respond_to do |format|
-      format.html { redirect_to album_image_path(@album,@image), notice: 'Image was successfully destroyed.' }
+      format.html { redirect_to album_images_path(@album), notice: 'Image was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_album
+      @album = Album.find params[:album_id]
+    end
+    
     def set_image
+    # binding.pry
       @image = Image.find(params[:id])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
       params.require(:image).permit(:name, :image, :remove_image)
     end
+    # 
 end

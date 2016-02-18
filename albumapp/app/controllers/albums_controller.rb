@@ -5,7 +5,11 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @albums = current_user.albums
+    # @albums = Album.all
+    # binding.pry
+
+    # User.find_by(params[:user_id])
   end
 
   # GET /albums/1
@@ -27,6 +31,7 @@ class AlbumsController < ApplicationController
   # POST /albums.json
   def create
     @album = Album.new(album_params)
+    @album.user = current_user
 
     respond_to do |format|
       if @album.save

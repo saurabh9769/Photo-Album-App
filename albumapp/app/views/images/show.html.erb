@@ -10,5 +10,6 @@
   <%= image_tag @image.image_url(:small) %>
 </p>
 
+<%= link_to 'Back to Album' , albums_path  %>
 <%= link_to 'Edit', edit_album_image_path(@album,@image) %>
-<%= link_to 'Back', album_images_path %>
+<%= link_to 'Back to Images', album_images_path %>

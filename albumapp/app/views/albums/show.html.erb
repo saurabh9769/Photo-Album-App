@@ -14,14 +14,20 @@
   <%= @album.description %>
 </p>
 
-
-
-
 <%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+<%= link_to 'Album Index', albums_path %><br><br>
 
-<p>
+<!-- <p>
 	<strong>Gallery :</strong>
-	<%= link_to 'Gallery' , album_images_path(@album,@image) %>
+	
 
-</p>
+</p> -->
+
+<%= link_to 'Gallery' , album_images_path(@album,@image) %><br><br>
+<% @album.images.each do |image| %>
+  <%= link_to [@album, image] do %>
+    <%= image_tag image.image_url(:thumb) %>
+  <% end %>
+<% end %>
+<br><br>
+<p><%= link_to 'Upload new photo', new_album_image_path(@album) %></p>

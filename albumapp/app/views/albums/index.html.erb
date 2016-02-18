@@ -1,20 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Albums</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Thumbnail</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+<h1><strong>Listing Albums</strong></h1>
+  <div class="container-fluid">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Thumbnail</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th colspan="6"></th>
+        </tr>
+      </thead>
+  </div>
+  
   <tbody>
+    
     <% @albums.each do |album| %>
-      <tr>
+      <tr class="active">
         <td><%= image_tag album.thumbnail_url(:thumb) %></td>
         <td><%= album.title %></td>
         <td><%= album.description %></td>      
@@ -23,10 +25,13 @@
         <td><%= link_to 'Delete', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+  
   </tbody>
+  
 </table>
 
 <br>
 
-<%= link_to 'New Album', new_album_path %>
-<%= link_to 'Sign Out', destroy_user_session_path,method: :delete %><br>
+<%= link_to 'New Album', new_album_path %> |
+<%= link_to 'Sign Out', destroy_user_session_path,method: :delete %> |
+<%= link_to 'Edit User Information' , edit_user_registration_path %>
