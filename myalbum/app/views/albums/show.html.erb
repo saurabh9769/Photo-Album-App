@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @album.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @album.title %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <!-- <div class = "image_placeholder"></div> -->
+  <!-- <%= image_tag @album.image.thumb.url %> -->
+  <%= image_tag @album.image_url(:thumb) %>
+</p>
+
+<%= link_to 'Edit', edit_album_path(@album) %> |
+<%= link_to 'Back', albums_path %>

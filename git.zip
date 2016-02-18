@@ -1,0 +1,15 @@
+--2016-02-04 09:55:23--  https://github.com/saurabh9769/Photo-Album-App.git
+Resolving github.com (github.com)... 192.30.252.131
+Connecting to github.com (github.com)|192.30.252.131|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://github.com/saurabh9769/Photo-Album-App [following]
+--2016-02-04 09:55:23--  https://github.com/saurabh9769/Photo-Album-App
+Reusing existing connection to github.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘Photo-Album-App.git’
+
+     0K .......... .......... ...                               111K=0.2s
+
+2016-02-04 09:55:24 (111 KB/s) - ‘Photo-Album-App.git’ saved [24547]
+
