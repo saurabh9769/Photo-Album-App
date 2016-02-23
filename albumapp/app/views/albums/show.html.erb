@@ -1,33 +1,59 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Thumbnail:</strong>
-  <%= image_tag @album.thumbnail_url(:small) %>
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= @album.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @album.description %>
-</p>
-
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Album Index', albums_path %><br><br>
-
-<!-- <p>
-	<strong>Gallery :</strong>
-	
-
-</p> -->
-
-<%= link_to 'Gallery' , album_images_path(@album,@image) %><br><br>
-<% @album.images.each do |image| %>
-  <%= link_to [@album, image] do %>
-    <%= image_tag image.image_url(:thumb) %>
-  <% end %>
-<% end %>
-<br><br>
-<p><%= link_to 'Upload new photo', new_album_image_path(@album) %></p>
+<div class="container">
+  <div class="row">
+    <div class="well">
+      <div class="text-right">
+        <%= link_to 'Edit', edit_album_path(@album) %> |
+        <%= link_to 'Album Index', albums_path %>
+        <br>
+      </div>
+      <h1 class="text-center">Album Application</h1>
+      <br>
+      <br>
+      <div class="row centered-form">
+        <!-- <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4"> -->
+          <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+              <h1 class="panel-title text-center"><strong>Album</strong></h1>
+            </div>
+            <div class="panel-body text-center">
+              <form role="form">
+                <p id="notice"><%= notice %></p>
+                <p>
+                  <strong>Thumbnail:</strong>
+                  <%= image_tag @album.thumbnail_url(:small) %>
+                </p>
+                <p>
+                  <strong>Title:</strong>
+                  <%= @album.title %>
+                </p>
+                <p>
+                  <strong>Description:</strong>
+                  <%= @album.description %>
+                </p>
+                <div class="row">
+                    <div class="text-center">
+                        <h5><u><strong>Image Gallery</strong></u></h5>
+                    </div>
+                    <!-- <div class="row"> -->
+                        <!-- <div class="col-md-9"> -->
+                            <div class="modal-body">
+                              <% @album.images.each do |image| %>
+                                <%= link_to [@album, image] do %>
+                                  <%= image_tag image.image_url(:thumb) %>
+                                <% end %>
+                              <% end %>   
+                            </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
+                      <div class="col-md-2 col-sm-offset-5">
+                        <p><%= link_to 'Upload new photo', new_album_image_path(@album) , class: "btn btn-info btn-block" %></p>
+                      </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

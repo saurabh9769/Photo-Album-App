@@ -1,15 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @image.name %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @image.image_url(:small) %>
-</p>
-
-<%= link_to 'Back to Album' , albums_path  %>
-<%= link_to 'Edit', edit_album_image_path(@album,@image) %>
-<%= link_to 'Back to Images', album_images_path %>
+<div class="container">
+  <div class="row">
+    <div class="well">
+    	<div class="text-right">
+  	   	<%= link_to 'Back to Album' , albums_path  %>
+				
+				<%= link_to 'Back to Images', album_images_path %>
+			</div>
+			<h1 class="text-center">Album Application</h1><br>
+      <div class="row centered-form">
+        <!-- <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4"> -->
+          <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+              <h1 class="panel-title text-center"><strong>Gallery</strong></h1>
+            </div>
+            <div class="panel-body text-center">
+              <form role="form">
+								<p id="notice"><%= notice %></p>
+								<p>
+								  <strong>Image:</strong>
+								  <%= image_tag @image.image_url(:small) %>
+								</p><br>
+								<div class="col-xs-12 col-sm-6 col-sm-offset-5 col-md-2">
+									<div class="form-group"><%= link_to 'Edit', edit_album_image_path(@album,@image) , class: "btn btn-info btn-block" %></div>
+								</div>
+							</form>
+						</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,28 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="well">
+      <div class="text-right">
+        <%= link_to 'New Image', new_album_image_path(@album) %> |
+        <%= link_to 'Album', albums_path %>
+      </div>
+      <h1 class="text-center">Album Application</h1>
+      <div class="row centered-form">
+        <!-- <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4"> -->
+          <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+              <h1 class="panel-title text-center"><strong>Images</strong></h1>
+            </div>
+            <div class="panel-body text-center">
+              <form role="form">
+                <p id="notice"><%= notice %></p>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Images</th>
+                      <th colspan="3"></th>
+                    </tr>
+                  </thead>
 
-<h1>Listing Images</h1>
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Images</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @images.each do |image| %>
-      <tr>
-        <td><%= image_tag image.image_url(:thumb) %></td>
-        <td><%= link_to 'Show', album_image_path(@album,image) %></td>
-        <td><%= link_to 'Edit', edit_album_image_path(@album,image) %></td>
-        <td><%= link_to 'Destroy', album_image_path(@album,image), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Image', new_album_image_path(@album) %> |
-<%= link_to 'Album', albums_path %>
+                  <tbody>
+                    <% @images.each do |image| %>
+                      <tr>
+                        <td><%= image_tag image.image_url(:thumb) %></td>
+                        <td><%= link_to 'Show', album_image_path(@album,image) %></td>
+                        <td><%= link_to 'Edit', edit_album_image_path(@album,image) %></td>
+                        <td><%= link_to 'Destroy', album_image_path(@album,image), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,42 @@
 <% provide(:title, "Log in") %>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="well">
+            <h1 class="text-center">Album Application</h1>
+            <div class="row centered-form">
+                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <br>
+                            <%= link_to 'Sign In', albums_path , class: "list-group-item" , class: "btn btn-info btn-block" %>
+                            <br>
+                            <%= link_to 'New User? Sign Up', new_user_registration_path , class: "list-group-item" , class: "btn btn-info btn-block" %>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<h1>Welcome</h1>
+<style>
+#container1 {
+    background-color: #e2dada;
+}
 
-<%= link_to 'Sign In', albums_path %><br>
+.centered-form {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
 
-<%= link_to 'New User? Sign Up', new_user_registration_path %><br>
+.centered-form .panel {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+</style>

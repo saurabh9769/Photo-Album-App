@@ -8,8 +8,6 @@ class AlbumsController < ApplicationController
     @albums = current_user.albums
     # @albums = Album.all
     # binding.pry
-
-    # User.find_by(params[:user_id])
   end
 
   # GET /albums/1

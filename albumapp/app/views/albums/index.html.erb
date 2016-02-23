@@ -1,37 +1,74 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="well">
+      <div class="text-right">
+        <%= link_to 'New Album', new_album_path %> |
+        <%= link_to 'Sign Out', destroy_user_session_path,method: :delete %> |
+        <%= link_to 'Edit User Information' , edit_user_registration_path %>
+      </div>
+      <h1 class="text-center">Album Application</h1>
+      <div class="row centered-form">
+        <!-- <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4"> -->
+          <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+              <h1 class="panel-title text-center"><strong>Albums</strong></h1>
+            </div>
+            <div class="panel-body text-center">
+              <form role="form">
+                <p id="notice"><%= notice %></p>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Thumbnail</th>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th colspan="6"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @albums.each do |album| %>
+                      <tr>
+                        <td><%= image_tag album.thumbnail_url(:thumb) %></td>
+                        <td><%= album.title %></td>
+                        <td><%= album.description %></td>      
+                        <td><%= link_to 'View', album_path(album) %></td>
+                        <td><%= link_to 'Update', edit_album_path(album) %></td>
+                        <td><%= link_to 'Delete', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+                <br>
 
-<h1><strong>Listing Albums</strong></h1>
-  <div class="container-fluid">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Thumbnail</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th colspan="6"></th>
-        </tr>
-      </thead>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <tbody>
-    
-    <% @albums.each do |album| %>
-      <tr class="active">
-        <td><%= image_tag album.thumbnail_url(:thumb) %></td>
-        <td><%= album.title %></td>
-        <td><%= album.description %></td>      
-        <td><%= link_to 'View', album_path(album) %></td>
-        <td><%= link_to 'Update', edit_album_path(album) %></td>
-        <td><%= link_to 'Delete', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  
-  </tbody>
-  
-</table>
+</div>
 
-<br>
+<style>
+  #container1 {
+    background-color: #e2dada;
+  }
 
-<%= link_to 'New Album', new_album_path %> |
-<%= link_to 'Sign Out', destroy_user_session_path,method: :delete %> |
-<%= link_to 'Edit User Information' , edit_user_registration_path %>
+  .centered-form {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .centered-form .panel {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+  }
+
+  .table th {
+   text-align: center;   
+  }
+</style>
+
+
+

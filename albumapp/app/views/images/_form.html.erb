@@ -1,5 +1,5 @@
 <%= form_for [@album,@image] do |f| %>
-<form class="form-horizontal">
+  <form class="form-horizontal">
   <% if @image.errors.any? %>
     <div class="form-group" id="error_explanation">
       <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
@@ -10,25 +10,25 @@
       <% end %>
       </ul>
     </div>
-  <% end %><br>
-  <div class="form-group">
-    <label for="title" class="col-sm-1 control-label">Name:</label>
-    <%= f.text_field :name %>
-  </div>
-  <div class="form-group">
-    <label for="image" class="col-sm-1 control-label">Image:</label>
-    <%= f.file_field :image %><br>
-    <% if f.object.image? %>
-      <%= image_tag f.object.image_url(:small) %>
-      <%= f.check_box :remove_image %> 
-      <%= f.label :remove_image %>
-    <% end %>
-  </div>
-  <div class="actions">
-    <div class="col-sm-offset-1 col-sm-30">
-      <!-- <button class="btn btn-default" type="submit"><%= f.submit %></button> -->
-      <%= submit_tag "Create Image", :class => "login-button" %></p>
+  <% end %>
+  <br>
+  <div class="panel-body">
+    <div class="form-group">
+      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-6 col-md-offset-4">
+        <%= f.text_field :name , class: "form-control input-sm" , placeholder: "Name" %><br>
+        <%= f.file_field :image , class: "form-control input-sm" , placeholder: "Name" %><br>
+        <% if f.object.image? %>
+          <%= image_tag f.object.image_url(:small) %>
+          <%= f.check_box :remove_image %> 
+          <%= f.label :remove_image %>
+        <% end %>
+        <br>
+        <br>
+        <div class="actions">
+          <%= submit_tag "Create Image", :class => "login-button btn-info" %>
+        </div>
+      </div>
     </div>
   </div>
+  </form>
 <% end %>
-</form>
